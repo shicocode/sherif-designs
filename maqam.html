@@ -97,6 +97,34 @@ footer{background:var(--dark);padding:3rem;display:flex;align-items:center;justi
 .footer-links{display:flex;gap:2rem}
 .footer-links a{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,248,244,0.35);text-decoration:none}
 .footer-copy{font-size:11px;color:rgba(250,248,244,0.25);letter-spacing:0.05em}
+
+@media (max-width: 900px) {
+  nav{padding:1rem 1.25rem}
+  .nav-links,.nav-right{display:none}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left,.hero-right{padding:3.5rem 1.35rem;min-height:420px}
+  .hero-title{font-size:clamp(46px,16vw,58px)}
+  .hero-right-title{font-size:34px}
+  .hero-stats{gap:1.25rem;overflow-x:auto}
+  .section{padding:4rem 1.25rem}
+  .section-header{display:block;margin-bottom:2.5rem}
+  .section-link{display:inline-block;margin-top:1rem}
+  .products-grid{grid-template-columns:1fr 1fr;gap:1.25rem}
+  .about-section{padding:4rem 1.25rem;grid-template-columns:1fr;gap:3rem}
+  .testimonials{padding:4rem 1.25rem}
+  .testimonials-grid{grid-template-columns:1fr}
+  .newsletter{padding:4rem 1.25rem}
+  footer{padding:2.5rem 1.25rem;display:grid;gap:1.5rem;justify-items:start}
+  .footer-links{flex-wrap:wrap;gap:1rem}
+}
+
+@media (max-width: 560px) {
+  .products-grid{grid-template-columns:1fr}
+  .hero-left,.hero-right{padding:3rem 1.1rem;min-height:auto}
+  .hero-stats{display:grid;grid-template-columns:repeat(3,minmax(86px,1fr))}
+  .newsletter-form{display:grid;gap:0.75rem}
+  .newsletter-btn,.newsletter-input{width:100%}
+}
 </style>
 </head>
 <body>
