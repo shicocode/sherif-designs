@@ -321,13 +321,19 @@
     }
     .plan.featured .plan-features li { color: rgba(255,255,255,.76); }
     .plan-features li::before {
-      content: "âœ“";
+      content: "";
       position: absolute;
       left: 0;
+      top: 5px;
+      width: 8px;
+      height: 4px;
+      border-left: 2px solid var(--teal);
+      border-bottom: 2px solid var(--teal);
+      transform: rotate(-45deg);
       color: var(--teal);
       font-weight: 900;
     }
-    .plan.featured .plan-features li::before { color: #6ee7df; }
+    .plan.featured .plan-features li::before { border-color: #6ee7df; }
     .plan .button { width: 100%; }
     .plan.featured .button {
       border-color: white;
