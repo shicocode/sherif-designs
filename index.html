@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sherif Designs | Websites for Egyptian Businesses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --paper: #f7f4ee;
+      --ink: #17191f;
+      --muted: #666b73;
+      --line: #ded7ca;
+      --card: #fffdf8;
+      --teal: #0f766e;
+      --copper: #b45f3c;
+      --blue: #244c8f;
+      --soft: #e7f0ee;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
+    a { color: inherit; }
+    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+
+    /* NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 244, 238, .92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: .01em;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--ink);
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 0 22px;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      color: white;
+      background: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+    .button:hover { opacity: .85; }
+    .button.secondary {
+      color: var(--ink);
+      background: transparent;
+    }
+    .button.green {
+      background: #25D366;
+      border-color: #25D366;
+      color: white;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 56px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .eyebrow {
+      margin-bottom: 18px;
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      margin-bottom: 22px;
+      font-size: clamp(44px, 6.5vw, 74px);
+      line-height: 1.0;
+      letter-spacing: -.01em;
+      font-weight: 400;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--copper);
+    }
+    .lead {
+      max-width: 580px;
+      margin-bottom: 32px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-panel {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--card);
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(23, 25, 31, .1);
+    }
+    .panel-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 999px; background: var(--copper); }
+    .dot:nth-child(2) { background: #d5a02e; }
+    .dot:nth-child(3) { background: var(--teal); }
+    .panel-body { padding: 28px; }
+    .mock-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      min-height: 380px;
+    }
+    .mock-main {
+      border-radius: 8px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #e9dccb;
+    }
+    .mock-side { border-radius: 8px; background: #173f3a; }
+    .mock-title {
+      max-width: 240px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      line-height: 1.05;
+      font-weight: 400;
+    }
+    .mock-lines { display: grid; gap: 10px; }
+    .mock-lines span { height: 11px; border-radius: 999px; background: rgba(23, 25, 31, .2); }
+    .mock-lines span:nth-child(2) { width: 72%; }
+    .mock-lines span:nth-child(3) { width: 48%; }
+
+    /* SECTIONS */
+    section { padding: 64px 0; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.05;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+    .section-head p { max-width: 480px; color: var(--muted); margin-bottom: 0; }
+
+    /* SERVICES */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .service {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+      padding: 26px;
+    }
+    .service-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 22px;
+      border-radius: 8px;
+      color: white;
+      background: var(--teal);
+      font-size: 20px;
+    }
+    .service:nth-child(2) .service-icon { background: var(--copper); }
+    .service:nth-child(3) .service-icon { background: var(--blue); }
+    .service h3 { margin-bottom: 8px; font-size: 19px; }
+    .service p { color: var(--muted); margin-bottom: 0; font-size: 15px; }
+
+    /* PROJECTS */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .project {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+      overflow: hidden;
+    }
+    .project-thumb {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4 / 3;
+      border-bottom: 1px solid var(--line);
+      background: #ece6db;
+      overflow: hidden;
+      position: relative;
+    }
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Placeholder thumb visuals when no image */
+    .thumb-bosto { background: linear-gradient(145deg, #2c1810 0%, #8b4513 60%, #d4956a 100%); }
+    .thumb-maqam { background: linear-gradient(145deg, #1a1207 0%, #3d2b1f 60%, #c9a96e 100%); }
+    .thumb-noor  { background: linear-gradient(145deg, #f0ebe3 0%, #d4c5b0 60%, #a89070 100%); }
+    .thumb-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .thumb-label span:first-child {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      color: rgba(255,255,255,.9);
+      font-weight: 400;
+    }
+    .thumb-label span:last-child {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+    }
+    .project-content { padding: 20px; }
+    .project h3 { margin-bottom: 6px; font-size: 18px; }
+    .project p { color: var(--muted); margin-bottom: 0; font-size: 14px; line-height: 1.55; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 16px; }
+    .tag {
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: #31514e;
+      background: var(--soft);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .project-link {
+      display: inline-flex;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      border-bottom: 2px solid var(--copper);
+    }
+    .project-link:hover { color: var(--copper); }
+
+    /* PRICING */
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .plan {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+    }
+    .plan.featured {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: white;
+    }
+    .plan-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+    .plan.featured .plan-label { color: #6ee7df; }
+    .plan h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .plan-desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      line-height: 1.55;
+    }
+    .plan.featured .plan-desc { color: rgba(255,255,255,.6); }
+    .plan-price {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .plan-currency {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      vertical-align: super;
+      margin-right: 2px;
+    }
+    .plan-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .plan.featured .plan-note { color: rgba(255,255,255,.5); }
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px;
+      display: grid;
+      gap: 10px;
+      flex: 1;
+    }
+    .plan-features li {
+      font-size: 14px;
+      color: var(--muted);
+      padding-left: 20px;
+      position: relative;
+    }
+    .plan.featured .plan-features li { color: rgba(255,255,255,.75); }
+    .plan-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: 700;
+    }
+    .plan.featured .plan-features li::before { color: #6ee7df; }
+    .plan .button {
+      width: 100%;
+      background: var(--soft);
+      border-color: var(--soft);
+      color: var(--ink);
+    }
+    .plan.featured .button {
+      background: white;
+      border-color: white;
+      color: var(--ink);
+    }
+    .pricing-note {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* PROCESS */
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      counter-reset: step;
+    }
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+      padding: 24px;
+      counter-increment: step;
+    }
+    .step::before {
+      content: "0" counter(step);
+      display: block;
+      margin-bottom: 28px;
+      color: var(--copper);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .16em;
+    }
+    .step h3 { margin-bottom: 8px; font-size: 18px; }
+    .step p { color: var(--muted); margin-bottom: 0; font-size: 14px; }
+
+    /* CONTACT */
+    .contact-band {
+      margin: 34px 0 70px;
+      padding: 44px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+      border-radius: 12px;
+      color: white;
+      background: var(--ink);
+    }
+    .contact-band h2 { color: white; margin-bottom: 10px; }
+    .contact-band p { color: rgba(255,255,255,.65); margin-bottom: 0; max-width: 520px; }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .services, .process { grid-template-columns: repeat(2, 1fr); }
+      .projects, .pricing { grid-template-columns: repeat(2, 1fr); }
+      .contact-band { grid-template-columns: 1fr; }
+      .mock-grid { min-height: 300px; }
+    }
+    @media (max-width: 580px) {
+      .shell { width: calc(100% - 28px); }
+      .hero { padding-top: 48px; }
+      .services, .process, .projects, .pricing { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .panel-body, .contact-band { padding: 24px; }
+      .mock-grid { grid-template-columns: 1fr; }
+      .mock-side { min-height: 140px; }
+      .button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="shell">
+      <a class="brand" href="#">
+        <span class="brand-mark">SD</span>
+        <span>Sherif Designs</span>
+      </a>
+      <div class="nav-links" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="button green" href="https://wa.me/201202277182">WhatsApp Me</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero shell">
+      <div>
+        <div class="eyebrow">Web design for Egyptian businesses</div>
+        <h1>I build websites that make your business <em>easy to find</em>.</h1>
+        <p class="lead">Clean, fast, mobile-ready websites for Egyptian restaurants, clothing brands, cafes, clinics, and local businesses. Starting at 1,500 EGP.</p>
+        <div class="hero-actions">
+          <a class="button" href="#work">View Work</a>
+          <a class="button secondary" href="#pricing">See Pricing</a>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="Website preview mockup">
+        <div class="panel-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="panel-body">
+          <div class="mock-grid">
+            <div class="mock-main">
+              <div class="mock-title">Menu, products, and contact in one clean page.</div>
+              <div class="mock-lines"><span></span><span></span><span></span></div>
+            </div>
+            <div class="mock-side"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="shell" id="services">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Services</div>
+          <h2>Built for businesses that sell through attention.</h2>
+        </div>
+        <p>Every project starts with a short conversation about your business, your content, and the look you want.</p>
+      </div>
+      <div class="services">
+        <article class="service">
+          <div class="service-icon">🍽</div>
+          <h3>Restaurant & cafe menus</h3>
+          <p>Online menus with categories, featured items, hours, location, and WhatsApp reservation or order buttons.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">👗</div>
+          <h3>Clothing catalogues</h3>
+          <p>Collection pages, product cards, sizes, color swatches, and an Instagram-ready brand presentation.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">🏢</div>
+          <h3>Business showcase sites</h3>
+          <p>Fast, clear websites for clinics, studios, shops, and brands that need customers to call or message.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="shell" id="work">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Selected work</div>
+          <h2>Recent projects.</h2>
+        </div>
+        <p>Visual, mobile-friendly, and focused on getting customers to reach out.</p>
+      </div>
+      <div class="projects">
+        <article class="project">
+          <div class="project-thumb">
+            <img src="assets/bosto-preview.png" alt="Bosto Cafe website preview">
+          </div>
+          <div class="project-content">
+            <h3>Bosto Cafe</h3>
+            <p>Menu tabs, branch details, guest reviews, and a reservation-focused layout for a Cairo cafe.</p>
+            <div class="tags"><span class="tag">Restaurant</span><span class="tag">Menu</span><span class="tag">Reservations</span></div>
+            <a class="project-link" href="projects/bosto_cafe.html">Open demo →</a>
+          </div>
+        </article>
+        <article class="project">
+          <div class="project-thumb">
+            <img src="assets/maqam-preview.png" alt="Maqam Clothing website preview">
+          </div>
+          <div class="project-content">
+            <h3>Maqam Clothing</h3>
+            <p>New arrivals, product swatches, brand story, and customer reviews for an Egyptian fashion brand.</p>
+            <div class="tags"><span class="tag">Clothing</span><span class="tag">Catalogue</span><span class="tag">Lookbook</span></div>
+            <a class="project-link" href="projects/maqam.html">Open demo →</a>
+          </div>
+        </article>
+        <article class="project">
+          <div class="project-thumb">
+            <img src="assets/noor-preview.png" alt="Noor Skincare website preview">
+          </div>
+          <div class="project-content">
+            <h3>Noor Skincare</h3>
+            <p>Product cards, skincare routine sections, ingredient breakdowns, and a clean premium brand feel.</p>
+            <div class="tags"><span class="tag">Skincare</span><span class="tag">Catalogue</span><span class="tag">Beauty</span></div>
+            <a class="project-link" href="projects/noor_skincare.html">Open demo →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="shell" id="pricing">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Pricing</div>
+          <h2>Simple, transparent packages.</h2>
+        </div>
+        <p>One-time build fee. No monthly charges from me — ever.</p>
+      </div>
+      <div class="pricing">
+        <div class="plan">
+          <div class="plan-label">Starter</div>
+          <h3>Catalogue Site</h3>
+          <p class="plan-desc">A beautiful product or menu showcase with WhatsApp ordering buttons. Built in HTML/CSS.</p>
+          <div class="plan-price"><span class="plan-currency">EGP</span>1,500<span style="font-size:24px">–2,500</span></div>
+          <p class="plan-note">One-time fee</p>
+          <ul class="plan-features">
+            <li>Up to 5 pages</li>
+            <li>Mobile-friendly design</li>
+            <li>WhatsApp order buttons</li>
+            <li>Product or menu grid</li>
+            <li>Hosted on your domain</li>
+          </ul>
+          <a class="button" href="https://wa.me/201202277182">Get Started</a>
+        </div>
+        <div class="plan featured">
+          <div class="plan-label">Most Popular</div>
+          <h3>Webflow Site</h3>
+          <p class="plan-desc">A clean business website you can update yourself. You pay Webflow directly (~$14–23/month).</p>
+          <div class="plan-price"><span class="plan-currency">EGP</span>3,000</div>
+          <p class="plan-note">One-time build fee</p>
+          <ul class="plan-features">
+            <li>CMS — edit without code</li>
+            <li>Professional animations</li>
+            <li>Mobile-friendly design</li>
+            <li>WhatsApp & contact forms</li>
+            <li>You own the Webflow account</li>
+          </ul>
+          <a class="button" href="https://wa.me/201202277182">Get Started</a>
+        </div>
+        <div class="plan">
+          <div class="plan-label">Full Ecommerce</div>
+          <h3>Shopify Store</h3>
+          <p class="plan-desc">Full ecommerce with cart and payments. You pay Shopify directly ($29/month). I charge setup only.</p>
+          <div class="plan-price"><span class="plan-currency">EGP</span>4,000<span style="font-size:24px">–6,000</span></div>
+          <p class="plan-note">One-time setup fee</p>
+          <ul class="plan-features">
+            <li>Full online store</li>
+            <li>Cart & payment setup</li>
+            <li>Product catalogue</li>
+            <li>Mobile-first design</li>
+            <li>You own the Shopify account</li>
+          </ul>
+          <a class="button" href="https://wa.me/201202277182">Get Started</a>
+        </div>
+      </div>
+      <p class="pricing-note">Not sure which package fits? <a href="https://wa.me/201202277182" style="color:var(--copper);font-weight:700;">Send me a message</a> and I'll tell you exactly what you need.</p>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="shell" id="process">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Process</div>
+          <h2>From first message to live website.</h2>
+        </div>
+      </div>
+      <div class="process">
+        <article class="step">
+          <h3>Collect content</h3>
+          <p>Logo, product photos, menu items, branches, contact details, and your preferred style.</p>
+        </article>
+        <article class="step">
+          <h3>Design direction</h3>
+          <p>We pick a look that fits the business: elegant, modern, cozy, premium, or practical.</p>
+        </article>
+        <article class="step">
+          <h3>Build the site</h3>
+          <p>I build the pages, catalogue sections, mobile layout, and contact buttons — fast.</p>
+        </article>
+        <article class="step">
+          <h3>Launch & adjust</h3>
+          <p>Publish the website, test on phones, and make final edits from your feedback.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="shell" id="contact">
+      <div class="contact-band">
+        <div>
+          <div class="eyebrow" style="color:#6ee7df;">Ready to start?</div>
+          <h2>Let's build your website.</h2>
+          <p>Send me your business name, what you sell, and the look you want. I'll reply with a plan and a price within 24 hours.</p>
+        </div>
+        <a class="button green" href="https://wa.me/201202277182">
+          WhatsApp Me
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-row">
+      <span>Sherif Designs</span>
+      <span>Websites for Egyptian businesses — starting at 1,500 EGP.</span>
+    </div>
+  </footer>
+</body>
+</html>

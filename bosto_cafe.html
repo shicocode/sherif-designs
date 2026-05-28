@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bosto — Cafe & Brunch · Cairo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --warm-white:#FDF8F2;
+  --cream:#F5EFE3;
+  --tan:#E8D9C0;
+  --brown:#6B4F35;
+  --dark-brown:#3D2B1A;
+  --mid:#8C7460;
+  --light:#B8A898;
+  --green:#5C6B4A;
+  --green-light:#EBF0E4;
+}
+body{font-family:'Jost',sans-serif;background:var(--warm-white);color:var(--dark-brown);font-weight:300;overflow-x:hidden}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:var(--warm-white);border-bottom:1px solid var(--tan);position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--dark-brown);letter-spacing:0.04em}
+.nav-logo span{color:var(--brown);font-style:italic}
+.nav-links{display:flex;gap:2.5rem}
+.nav-links a{font-size:13px;letter-spacing:0.08em;color:var(--mid);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--dark-brown)}
+.nav-reserve{background:var(--brown);color:#FDF8F2;font-size:12px;letter-spacing:0.1em;padding:0.6rem 1.5rem;text-decoration:none;transition:background 0.2s}
+.nav-reserve:hover{background:var(--dark-brown)}
+
+.hero{min-height:90vh;display:grid;grid-template-columns:55% 45%;position:relative}
+.hero-left{background:var(--cream);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.hero-left::after{content:'';position:absolute;bottom:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:var(--tan);opacity:0.5;z-index:0}
+.hero-left-content{position:relative;z-index:1}
+.hero-eyebrow{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem}
+.hero-eyebrow-line{width:32px;height:1px;background:var(--brown)}
+.hero-eyebrow-text{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--brown)}
+.hero-title{font-family:'Playfair Display',serif;font-size:68px;font-weight:400;line-height:1;color:var(--dark-brown);margin-bottom:1.5rem}
+.hero-title em{font-style:italic;color:var(--brown)}
+.hero-desc{font-size:15px;color:var(--mid);line-height:1.8;max-width:340px;margin-bottom:3rem}
+.hero-actions{display:flex;gap:1rem;align-items:center}
+.btn-primary{background:var(--brown);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;padding:0.9rem 2rem;text-decoration:none;transition:background 0.2s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--dark-brown)}
+.btn-ghost{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown);text-decoration:none;border-bottom:1px solid var(--tan);padding-bottom:2px;transition:border-color 0.2s}
+.btn-ghost:hover{border-color:var(--brown)}
+.hero-bottom{position:relative;z-index:1;display:flex;gap:3rem;padding-top:3rem;border-top:1px solid var(--tan)}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:38px;color:var(--dark-brown)}
+.hero-stat-label{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--light);margin-top:0.25rem}
+
+.hero-right{background:var(--dark-brown);display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;position:relative;overflow:hidden}
+.hero-right-bg{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;opacity:0.04}
+.hero-right-bg svg{width:400px;height:400px}
+.hero-badge{position:relative;z-index:1;background:var(--brown);color:var(--warm-white);display:inline-block;padding:0.5rem 1rem;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem;align-self:flex-start}
+.hero-right-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:var(--warm-white);line-height:1.2;position:relative;z-index:1;margin-bottom:1rem}
+.hero-right-title em{font-style:italic;color:var(--tan)}
+.hero-right-desc{font-size:13px;color:rgba(253,248,242,0.5);line-height:1.8;position:relative;z-index:1;margin-bottom:2rem}
+.hero-right-hours{position:relative;z-index:1;border-top:1px solid rgba(253,248,242,0.1);padding-top:1.5rem;display:flex;flex-direction:column;gap:0.75rem}
+.hours-row{display:flex;justify-content:space-between;align-items:center}
+.hours-day{font-size:12px;letter-spacing:0.06em;color:rgba(253,248,242,0.4);text-transform:uppercase}
+.hours-time{font-size:13px;color:var(--tan)}
+
+.strip{background:var(--green);padding:0.8rem 3rem;display:flex;align-items:center;justify-content:center;gap:4rem}
+.strip-item{display:flex;align-items:center;gap:0.75rem;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(235,240,228,0.8)}
+.strip-dot{width:4px;height:4px;border-radius:50%;background:rgba(235,240,228,0.3)}
+
+.menu-section{padding:6rem 3rem;background:var(--warm-white)}
+.section-eyebrow{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem}
+.section-eyebrow-line{width:24px;height:1px;background:var(--brown)}
+.section-eyebrow-text{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--brown)}
+.section-title{font-family:'Playfair Display',serif;font-size:46px;font-weight:400;color:var(--dark-brown);margin-bottom:0.5rem}
+.section-title em{font-style:italic;color:var(--brown)}
+.section-subtitle{font-size:14px;color:var(--light);margin-bottom:3.5rem;max-width:440px;line-height:1.7}
+
+.menu-tabs{display:flex;gap:0;margin-bottom:3rem;border-bottom:1px solid var(--tan)}
+.menu-tab{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--light);padding:0.75rem 1.75rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;background:none;border-top:none;border-left:none;border-right:none;font-family:'Jost',sans-serif}
+.menu-tab.active{color:var(--brown);border-bottom-color:var(--brown)}
+
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.menu-card{background:var(--cream);padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start;transition:transform 0.2s}
+.menu-card:hover{transform:translateY(-2px)}
+.menu-card-img{width:80px;height:80px;background:var(--tan);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px}
+.menu-card-body{flex:1}
+.menu-card-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:400;color:var(--dark-brown);margin-bottom:0.4rem}
+.menu-card-desc{font-size:12px;color:var(--mid);line-height:1.7;margin-bottom:0.75rem}
+.menu-card-footer{display:flex;justify-content:space-between;align-items:center}
+.menu-card-price{font-family:'Playfair Display',serif;font-size:18px;color:var(--brown)}
+.menu-card-tag{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);background:var(--green-light);padding:0.25rem 0.6rem}
+
+.about-section{background:var(--cream);padding:6rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-img-placeholder{background:var(--tan);height:500px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.about-img-placeholder::before{content:'';position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:var(--brown);opacity:0.15}
+.about-img-placeholder::after{content:'';position:absolute;bottom:-60px;right:-60px;width:280px;height:280px;border-radius:50%;background:var(--dark-brown);opacity:0.08}
+.about-img-text{font-family:'Playfair Display',serif;font-size:80px;color:var(--brown);opacity:0.2;font-style:italic;position:relative;z-index:1}
+.about-content{}
+.about-quote{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--brown);line-height:1.6;margin-bottom:2rem;padding-left:1.5rem;border-left:2px solid var(--tan)}
+.about-body{font-size:14px;color:var(--mid);line-height:1.9;margin-bottom:2rem}
+.about-signature{font-family:'Playfair Display',serif;font-size:24px;font-style:italic;color:var(--brown)}
+.about-signature-sub{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);margin-top:0.25rem}
+
+.gallery-strip{display:grid;grid-template-columns:repeat(4,1fr);height:280px}
+.gallery-item{background:var(--tan);display:flex;align-items:center;justify-content:center;font-size:40px;overflow:hidden;position:relative}
+.gallery-item:nth-child(2){background:var(--brown)}
+.gallery-item:nth-child(3){background:#D4C4A8}
+.gallery-item:nth-child(4){background:var(--dark-brown)}
+.gallery-item-label{position:absolute;bottom:1rem;left:1rem;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(253,248,242,0.6)}
+
+.testimonials{padding:6rem 3rem;background:var(--warm-white)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
+.testimonial{padding:2rem;border:1px solid var(--tan);background:var(--cream)}
+.testimonial-stars{color:var(--brown);font-size:13px;letter-spacing:3px;margin-bottom:1rem}
+.testimonial-text{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:var(--dark-brown);line-height:1.7;margin-bottom:1.25rem}
+.testimonial-author{font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--light)}
+
+.reserve-section{background:var(--dark-brown);padding:5rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:3rem}
+.reserve-left{}
+.reserve-eyebrow{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--tan);opacity:0.6;margin-bottom:1rem}
+.reserve-title{font-family:'Playfair Display',serif;font-size:46px;font-weight:400;color:var(--warm-white);line-height:1.1}
+.reserve-title em{font-style:italic;color:var(--tan)}
+.reserve-desc{font-size:14px;color:rgba(253,248,242,0.45);margin-top:1rem;line-height:1.8;max-width:400px}
+.reserve-right{display:flex;flex-direction:column;gap:1rem;min-width:320px}
+.reserve-input{background:rgba(253,248,242,0.06);border:1px solid rgba(253,248,242,0.12);padding:0.9rem 1.25rem;font-family:'Jost',sans-serif;font-size:13px;color:var(--warm-white);outline:none;width:100%}
+.reserve-input::placeholder{color:rgba(253,248,242,0.3)}
+.reserve-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.reserve-btn{background:var(--brown);color:var(--warm-white);font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;padding:1rem;border:none;cursor:pointer;transition:background 0.2s;width:100%}
+.reserve-btn:hover{background:#8B6545}
+
+footer{background:var(--dark-brown);border-top:1px solid rgba(253,248,242,0.08);padding:3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem}
+.footer-brand{font-family:'Playfair Display',serif;font-size:22px;color:var(--warm-white);margin-bottom:0.75rem}
+.footer-brand span{font-style:italic;color:var(--tan)}
+.footer-tagline{font-size:13px;color:rgba(253,248,242,0.35);line-height:1.7}
+.footer-heading{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--tan);opacity:0.6;margin-bottom:1rem}
+.footer-links{display:flex;flex-direction:column;gap:0.6rem}
+.footer-links a{font-size:13px;color:rgba(253,248,242,0.4);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--warm-white)}
+.footer-address{font-size:13px;color:rgba(253,248,242,0.4);line-height:1.8}
+.footer-bottom{background:var(--dark-brown);border-top:1px solid rgba(253,248,242,0.06);padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:11px;color:rgba(253,248,242,0.2);letter-spacing:0.05em}
+
+.tab-content{display:none}
+.tab-content.active{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Bo<span>sto</span></div>
+  <div class="nav-links">
+    <a href="#">Menu</a>
+    <a href="#">About</a>
+    <a href="#">Gallery</a>
+    <a href="#">Find Us</a>
+  </div>
+  <a href="#reserve" class="nav-reserve">Reserve a Table</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-left-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <div class="hero-eyebrow-text">Cairo · New Cairo · Since 2019</div>
+      </div>
+      <h1 class="hero-title">Where<br>mornings<br><em>linger.</em></h1>
+      <p class="hero-desc">A neighbourhood cafe built for slow breakfasts, long coffees, and the kind of brunch that turns into lunch without anyone minding.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary">View Our Menu</a>
+        <a href="#reserve" class="btn-ghost">Book a Table</a>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <div>
+        <div class="hero-stat-num">7am</div>
+        <div class="hero-stat-label">Opens Daily</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">4.9</div>
+        <div class="hero-stat-label">Google Rating</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">5yr</div>
+        <div class="hero-stat-label">In New Cairo</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg">
+      <svg viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="80" stroke="#FDF8F2" stroke-width="1"/>
+        <circle cx="100" cy="100" r="60" stroke="#FDF8F2" stroke-width="0.5"/>
+        <path d="M100 40 C100 40 120 70 100 100 C80 130 100 160 100 160" stroke="#FDF8F2" stroke-width="1"/>
+        <path d="M40 100 C40 100 70 80 100 100 C130 120 160 100 160 100" stroke="#FDF8F2" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="hero-badge">Now Open</div>
+    <h2 class="hero-right-title">Brunch served<br>until <em>4pm daily.</em></h2>
+    <p class="hero-right-desc">No rush. No cut-off. Order at your own pace — we're here as long as you are.</p>
+    <div class="hero-right-hours">
+      <div class="hours-row">
+        <span class="hours-day">Mon — Fri</span>
+        <span class="hours-time">7:00am — 10:00pm</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Sat — Sun</span>
+        <span class="hours-time">8:00am — 11:00pm</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-item">☕ Specialty Coffee</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">🥞 All-Day Brunch</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">🌿 Fresh Ingredients Daily</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">📍 New Cairo & Sheikh Zayed</div>
+</div>
+
+<section class="menu-section" id="menu">
+  <div class="section-eyebrow">
+    <div class="section-eyebrow-line"></div>
+    <div class="section-eyebrow-text">What we serve</div>
+  </div>
+  <h2 class="section-title">Our <em>Menu</em></h2>
+  <p class="section-subtitle">Everything made fresh every morning. Our kitchen closes only when the last guest leaves.</p>
+
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="switchTab('brunch',this)">Brunch</button>
+    <button class="menu-tab" onclick="switchTab('coffee',this)">Coffee & Drinks</button>
+    <button class="menu-tab" onclick="switchTab('sweets',this)">Sweets</button>
+  </div>
+
+  <div id="tab-brunch" class="tab-content active">
+    <div class="menu-card">
+      <div class="menu-card-img">🥑</div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Smashed Avocado Toast</div>
+        <div class="menu-card-desc">Sourdough, smashed avo, poached eggs, chilli flakes, microgreens, and a squeeze of lemon.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">185 EGP</div>
+          <div class="menu-card-tag">Best Seller</div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🍳</div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Big Bosto Breakfast</div>
+        <div class="menu-card-desc">Eggs your way, turkey bacon, grilled halloumi, roasted tomatoes, mushrooms, and sourdough.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">220 EGP</div>
+          <div class="menu-card-tag">New</div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🥞</div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Ricotta Pancakes</div>
+        <div class="menu-card-desc">Fluffy ricotta stack with fresh berries, honeycomb, and whipped cream.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">175 EGP</div>
+          <div class="menu-card-tag">Fan Favourite</div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🥗</div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Bosto Grain Bowl</div>
+        <div class="menu-card-desc">Quinoa, roasted sweet potato, soft boiled egg, tahini dressing, and toasted seeds.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">165 EGP</div>
+          <div class="menu-card-tag">Vegetarian</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-coffee" class="tab-content">
+    <div class="menu-card">
+      <div class="menu-card-img">☕</div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Bosto Signature Latte</div>
+        <div class="menu-card-desc">Double shot espresso, oat milk, vanilla, and a hint of cinnamon. Our most ordered drink.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">85 EGP</div>
+          <div class="menu-card-tag">Best Seller</div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🧋</div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Iced Brown Sugar Latte</div>
+        <div class="menu-card-desc">Cold espresso, brown sugar syrup, oat milk over ice. Sweet, strong, and refreshing.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">95 EGP</div>
+          <div class="menu-card-tag">New</div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🍵</div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Matcha Latte</div>
+        <div class="menu-card-desc">Ceremonial grade matcha, steamed oat milk, lightly sweetened. Hot or iced.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">90 EGP</div>
+          <div class="menu-card-tag">Fan Favourite</div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🍊</div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Fresh Orange & Ginger</div>
+        <div class="menu-card-desc">Freshly squeezed orange juice with a ginger shot. Bright, zingy, and cold-pressed daily.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">75 EGP</div>
+          <div class="menu-card-tag">Fresh Daily</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-sweets" class="tab-content">
+    <div class="menu-card">
+      <div class="menu-card-img">🍰</div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Burnt Basque Cheesecake</div>
+        <div class="menu-card-desc">Creamy, caramelised, and made in-house every morning. Served warm or chilled.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">110 EGP</div>
+          <div class="menu-card-tag">Best Seller</div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🍫</div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Warm Chocolate Fondant</div>
+        <div class="menu-card-desc">Dark chocolate molten cake, vanilla ice cream, and crushed hazelnuts.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">125 EGP</div>
+          <div class="menu-card-tag">New</div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🥐</div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Butter Croissant</div>
+        <div class="menu-card-desc">Flaky, golden, and baked fresh every morning. Plain or with house-made jam.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">55 EGP</div>
+          <div class="menu-card-tag">Baked Fresh</div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🍮</div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">Crème Brûlée</div>
+        <div class="menu-card-desc">Classic vanilla custard with a perfectly torched sugar crust. A Bosto staple.</div>
+        <div class="menu-card-footer">
+          <div class="menu-card-price">100 EGP</div>
+          <div class="menu-card-tag">Fan Favourite</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="about-img-placeholder">
+    <div class="about-img-text">Bosto</div>
+  </div>
+  <div class="about-content">
+    <div class="section-eyebrow" style="margin-bottom:1.5rem">
+      <div class="section-eyebrow-line"></div>
+      <div class="section-eyebrow-text">Our Story</div>
+    </div>
+    <div class="about-quote">"We wanted to build the kind of place where you come in for breakfast and stay for lunch — and nobody rushes you out."</div>
+    <p class="about-body">Bosto started as a small corner cafe in New Cairo in 2019. We had twelve tables, one espresso machine, and a menu written on a chalkboard. Five years later the menu has grown, we've opened a second location in Sheikh Zayed, but the feeling hasn't changed.</p>
+    <p class="about-body">Everything we serve is made fresh in our kitchen each morning. No frozen pastries, no pre-made sauces. Just real food, good coffee, and a space that feels like yours.</p>
+    <div class="about-signature">Nadia & Omar</div>
+    <div class="about-signature-sub">Founders, Bosto Cafe</div>
+  </div>
+</section>
+
+<div class="gallery-strip">
+  <div class="gallery-item" style="font-size:60px">☕<div class="gallery-item-label">Morning Coffee</div></div>
+  <div class="gallery-item" style="font-size:60px;color:var(--tan)">🥞<div class="gallery-item-label">Weekend Brunch</div></div>
+  <div class="gallery-item" style="font-size:60px">🥑<div class="gallery-item-label">Avocado Toast</div></div>
+  <div class="gallery-item" style="font-size:60px;color:var(--tan)">🍰<div class="gallery-item-label">House Desserts</div></div>
+</div>
+
+<section class="testimonials">
+  <div class="section-eyebrow">
+    <div class="section-eyebrow-line"></div>
+    <div class="section-eyebrow-text">What our guests say</div>
+  </div>
+  <h2 class="section-title" style="margin-bottom:0">Guest <em>Reviews</em></h2>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Genuinely the best brunch in New Cairo. The ricotta pancakes are something else. We come every single weekend."</p>
+      <div class="testimonial-author">Yasmine K. — New Cairo</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"The coffee is the best I've had in Cairo and I've tried everywhere. The signature latte alone is worth the trip."</p>
+      <div class="testimonial-author">Ahmed R. — Maadi</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Came in for a quick coffee, stayed three hours. The vibe is exactly what Cairo needed. Can't wait for the third branch."</p>
+      <div class="testimonial-author">Salma T. — Sheikh Zayed</div>
+    </div>
+  </div>
+</section>
+
+<section class="reserve-section" id="reserve">
+  <div class="reserve-left">
+    <div class="reserve-eyebrow">Make a reservation</div>
+    <h2 class="reserve-title">Book your<br><em>table.</em></h2>
+    <p class="reserve-desc">Reserve a spot for breakfast, brunch, or an afternoon coffee. Walk-ins always welcome but we recommend booking on weekends.</p>
+  </div>
+  <div class="reserve-right">
+    <input class="reserve-input" type="text" placeholder="Your name">
+    <div class="reserve-row">
+      <input class="reserve-input" type="text" placeholder="Date">
+      <input class="reserve-input" type="text" placeholder="Time">
+    </div>
+    <input class="reserve-input" type="text" placeholder="Number of guests">
+    <input class="reserve-input" type="tel" placeholder="Phone number">
+    <button class="reserve-btn">Reserve via WhatsApp</button>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand">Bo<span>sto</span></div>
+    <div class="footer-tagline">Where mornings linger.<br>New Cairo & Sheikh Zayed.</div>
+  </div>
+  <div>
+    <div class="footer-heading">Quick Links</div>
+    <div class="footer-links">
+      <a href="#">Menu</a>
+      <a href="#">About Us</a>
+      <a href="#">Reservations</a>
+      <a href="#">Gallery</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+  <div>
+    <div class="footer-heading">Find Us</div>
+    <div class="footer-address">
+      Branch 1 — New Cairo<br>
+      Street 90, Fifth Settlement<br><br>
+      Branch 2 — Sheikh Zayed<br>
+      Arkan Plaza, 6th of October<br><br>
+      info@bostocafe.com<br>
+      +20 100 000 0000
+    </div>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <div class="footer-copy">© 2026 Bosto Cafe. Cairo, Egypt.</div>
+  <div class="footer-copy">Made with care in Cairo.</div>
+</div>
+
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
